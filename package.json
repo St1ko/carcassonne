@@ -9,12 +9,6 @@
     "lint": "next lint",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "**/*": [
-      "lint --fix",
-      "prettier --write --ignore-unknown"
-    ]
-  },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
     "next": "14.0.4",
