@@ -1,0 +1,5 @@
+.draggable {
+  background-color: blueviolet;
+  width: var(--tile-size);
+  height: var(--tile-size);
+}
