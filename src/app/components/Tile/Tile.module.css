@@ -1,0 +1,17 @@
+.tile {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+
+.over {
+  border: 2px solid lightgreen;
+}
+
+@media (prefers-color-scheme: dark) {
+  .tile {
+    background: darkgrey;
+  }
+}
