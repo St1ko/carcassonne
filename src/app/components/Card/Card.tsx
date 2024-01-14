@@ -8,7 +8,8 @@ interface Props {
 }
 
 export const Card: React.FC<Props> = ({ card, location }) => {
-  const dragStartHandler = (ev) => {
+  // TODO: fix ev type
+  const dragStartHandler = (ev: any) => {
     const data = { card: card, from: location };
     ev.dataTransfer.setData("text/plain", JSON.stringify(data));
     ev.dataTransfer.effectAllowed = "move";
