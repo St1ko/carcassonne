@@ -1,10 +1,12 @@
 import React from "react";
 
+import { colorMapping } from "@/app/models/cards";
+
 import styles from "./Card.module.css";
 
 interface Props {
   card: CardType;
-  location: BoardLocation;
+  location?: TileType;
 }
 
 export const Card: React.FC<Props> = ({ card, location }) => {
@@ -15,7 +17,7 @@ export const Card: React.FC<Props> = ({ card, location }) => {
   };
 
   const style = {
-    backgroundColor: card.color,
+    backgroundColor: colorMapping[card.id],
     ...(card.rotation && { transform: `rotate(${card.rotation}deg)` }),
   };
 

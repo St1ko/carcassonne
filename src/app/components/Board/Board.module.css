@@ -19,10 +19,3 @@
   align-items: center;
   min-width: 300px;
 }
-
-.stack {
-  display: flex;
-  width: calc(1.5 * var(--tile-size));
-  height: calc(1.5 * var(--tile-size));
-  padding: var(--space-xs);
-}

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext } from "react";
 
 import { BoardContext } from "@/app/context/boardContext";
@@ -20,7 +22,7 @@ export const Tile: React.FC<Props> = ({ tile }) => {
   const dropHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
     const { card, from } = JSON.parse(event.dataTransfer.getData("text/plain"));
-    moveCard(card, from, tile);
+    moveCard(card, tile, from);
   };
 
   const card = board[tile];

@@ -1,18 +1,10 @@
-"use client";
-
 import React from "react";
 
 import BoardContextProvider from "@/app/context/boardContext";
 
 import styles from "./Board.module.css";
-import { Card } from "../Card/Card";
+import { Stack } from "../Stack/Stack";
 import { Tile } from "../Tile/Tile";
-
-export const cards: CardType[] = [
-  { id: "1", color: "red" },
-  { id: "2", color: "green" },
-  { id: "3", color: "blue" },
-];
 
 export function Board() {
   const [width, height] = [8, 12];
@@ -27,11 +19,7 @@ export function Board() {
     <BoardContextProvider>
       <div className={styles.board}>
         <aside className={styles.aside}>
-          <div className={styles.stack}>
-            {cards.map((card, idx) => (
-              <Card key={idx} card={card} location="stack"></Card>
-            ))}
-          </div>
+          <Stack />
         </aside>
         <div
           className={styles.field}

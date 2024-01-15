@@ -1,9 +1,8 @@
-type BoardLocation = TileType | "stack";
-
-type BoardType = Record<BoardLocation, CardType>;
+type BoardType = Record<TileType, CardType>;
 
 type BoardContextType = {
   board: BoardType;
-  moveCard: (card: CardType, from: BoardLocation, to: BoardLocation) => void;
+  stack: CardType[];
+  moveCard: (card: CardType, to: TileType, from?: TileType) => void;
   // rotateCard: (id: string) => void;
 };
