@@ -12,17 +12,14 @@ interface Props {
 export const Tile: React.FC<Props> = ({ tile }) => {
   const { board, moveCard } = useContext(BoardContext) as BoardContextType;
 
-  // TODO: fix ev type
-  const dragOverHandler = (ev: any) => {
-    ev.preventDefault();
-    ev.dataTransfer.dropEffect = "move";
+  const dragOverHandler = (event: React.DragEvent<HTMLDivElement>): void => {
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
   };
 
-  // TODO: fix ev type
-  const dropHandler = (ev: any) => {
-    ev.preventDefault();
-    const { card, from } = JSON.parse(ev.dataTransfer.getData("text/plain"));
-
+  const dropHandler = (event: React.DragEvent<HTMLDivElement>): void => {
+    event.preventDefault();
+    const { card, from } = JSON.parse(event.dataTransfer.getData("text/plain"));
     moveCard(card, from, tile);
   };
 
