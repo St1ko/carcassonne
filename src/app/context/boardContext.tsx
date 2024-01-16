@@ -10,8 +10,10 @@ interface Props {
   children: React.ReactNode;
 }
 
+const shuffledCards = shuffle(cards);
+
 const BoardContextProvider: React.FC<Props> = ({ children }) => {
-  const [stack, setStack] = React.useState<CardType[]>(shuffle(cards));
+  const [stack, setStack] = React.useState<CardType[]>(shuffledCards);
   const [board, setBoard] = React.useState<BoardType>({});
 
   const moveCard = (card: CardType, to: TileType, from?: TileType) => {
