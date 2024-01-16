@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 
-import { BoardContext } from "@/app/context/boardContext";
+import { GameContext } from "@/app/game/context/gameContext";
 
 import styles from "./Tile.module.css";
 import { Card } from "../Card/Card";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Tile: React.FC<Props> = ({ tile }) => {
-  const { board, moveCard } = useContext(BoardContext) as BoardContextType;
+  const { board, moveCard } = useContext(GameContext) as GameContextType;
 
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();

@@ -1,6 +1,6 @@
 type BoardType = Record<TileType, CardType>;
 
-type BoardContextType = {
+type GameContextType = {
   board: BoardType;
   stack: CardType[];
   moveCard: (card: CardType, to: TileType, from?: TileType) => void;
