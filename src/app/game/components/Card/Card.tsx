@@ -1,6 +1,6 @@
 import React from "react";
 
-import { colorMapping } from "@/app/models/cards";
+import { colorMapping } from "@/app/game/models/cards";
 
 import styles from "./Card.module.css";
 

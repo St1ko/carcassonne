@@ -4,7 +4,7 @@ import React from "react";
 
 import { cards, shuffle } from "../models/cards";
 
-export const BoardContext = React.createContext<BoardContextType | null>(null);
+export const GameContext = React.createContext<GameContextType | null>(null);
 
 interface Props {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ interface Props {
 
 const shuffledCards = shuffle(cards);
 
-const BoardContextProvider: React.FC<Props> = ({ children }) => {
+const GameContextProvider: React.FC<Props> = ({ children }) => {
   const [stack, setStack] = React.useState<CardType[]>(shuffledCards);
   const [board, setBoard] = React.useState<BoardType>({});
 
@@ -27,10 +27,10 @@ const BoardContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <BoardContext.Provider value={{ board, stack, moveCard }}>
+    <GameContext.Provider value={{ board, stack, moveCard }}>
       {children}
-    </BoardContext.Provider>
+    </GameContext.Provider>
   );
 };
 
-export default BoardContextProvider;
+export default GameContextProvider;

@@ -2,13 +2,13 @@
 
 import React, { useContext } from "react";
 
-import { BoardContext } from "@/app/context/boardContext";
+import { GameContext } from "@/app/game/context/gameContext";
 
 import styles from "./Stack.module.css";
 import { Card } from "../Card/Card";
 
 export const Stack: React.FC = () => {
-  const { stack } = useContext(BoardContext) as BoardContextType;
+  const { stack } = useContext(GameContext) as GameContextType;
 
   const card = stack[stack.length - 1];
 
