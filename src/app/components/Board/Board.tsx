@@ -1,47 +1,37 @@
-"use client";
+import React from "react";
 
-import React, { useState } from "react";
-
-import { DndContext } from "@dnd-kit/core";
+import BoardContextProvider from "@/app/context/boardContext";
 
 import styles from "./Board.module.css";
-import { Draggable } from "../Draggable/Draggable";
-import { Droppable } from "../Droppable/Droppable";
+import { Stack } from "../Stack/Stack";
+import { Tile } from "../Tile/Tile";
 
 export function Board() {
-  const [width, height] = [8, 8];
-  const [parent, setParent] = useState(null);
+  const [width, height] = [8, 12];
 
-  const fields = Array.from({ length: width * height }, (_, i) => i.toString());
-  const draggableMarkup = <Draggable id="draggable"></Draggable>;
+  const field = Array.from({ length: height }, (_, y) =>
+    Array.from({ length: width }, (_, x) => ({
+      tile: [x, y].join("-") as TileType,
+    }))
+  );
 
   return (
-    <DndContext onDragEnd={handleDragEnd}>
+    <BoardContextProvider>
       <div className={styles.board}>
         <aside className={styles.aside}>
-          <div className={styles.stack}>
-            <Droppable id="stack">
-              {(parent === "stack" || parent === null) && draggableMarkup}
-            </Droppable>
-          </div>
+          <Stack />
         </aside>
         <div
           className={styles.field}
-          style={{ gridTemplateColumns: `repeat(${width}, var(--tile-size))` }}
+          style={{
+            gridTemplateColumns: `repeat(${width}, var(--tile-size))`,
+          }}
         >
-          {fields.map((id) => (
-            <Droppable key={id} id={id}>
-              {parent === id && draggableMarkup}
-            </Droppable>
-          ))}
+          {field.map((row) => {
+            return row.map(({ tile }) => <Tile key={tile} tile={tile}></Tile>);
+          })}
         </div>
       </div>
-    </DndContext>
+    </BoardContextProvider>
   );
-
-  function handleDragEnd(event: any) {
-    const { over } = event;
-
-    setParent(over ? over.id : null);
-  }
 }

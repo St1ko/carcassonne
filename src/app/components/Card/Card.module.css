@@ -1,5 +1,4 @@
-.draggable {
-  background-color: blueviolet;
+.card {
   width: var(--tile-size);
   height: var(--tile-size);
 }
