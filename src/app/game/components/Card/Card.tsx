@@ -27,6 +27,6 @@ export const Card: React.FC<Props> = ({ card, location }) => {
       style={style}
       draggable="true"
       onDragStart={dragStartHandler}
-    ></div>
+    />
   );
 };
