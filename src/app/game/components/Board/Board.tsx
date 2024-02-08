@@ -1,33 +1,50 @@
+"use client";
+
 import React from "react";
 
+import { useOthers, useUpdateMyPresence } from "root/liveblocks.config";
+
 import styles from "./Board.module.css";
+import { Cursor, cursorColors } from "../Cursor/Cursor";
+import { Field } from "../Field/Field";
 import { Stack } from "../Stack/Stack";
-import { Tile } from "../Tile/Tile";
 
 export function Board() {
-  const [width, height] = [8, 12];
-
-  const field = Array.from({ length: height }, (_, y) =>
-    Array.from({ length: width }, (_, x) => ({
-      tile: [x, y].join("-") as TileType,
-    }))
-  );
+  const updateMyPresence = useUpdateMyPresence();
+  const others = useOthers();
+  const userCount = others.length;
 
   return (
-    <div className={styles.board}>
+    <div
+      className={styles.board}
+      onPointerMove={(e) =>
+        updateMyPresence({
+          cursor: {
+            x: Math.round(e.clientX),
+            y: Math.round(e.clientY),
+          },
+        })
+      }
+      onPointerLeave={() => updateMyPresence({ cursor: null })}
+    >
       <aside className={styles.aside}>
+        <div>There are {userCount} other user(s) online</div>
         <Stack />
       </aside>
-      <div
-        className={styles.field}
-        style={{
-          gridTemplateColumns: `repeat(${width}, var(--tile-size))`,
-        }}
-      >
-        {field.map((row) => {
-          return row.map(({ tile }) => <Tile key={tile} tile={tile}></Tile>);
-        })}
-      </div>
+
+      <Field size={12} />
+
+      {others.map(
+        ({ connectionId, presence }) =>
+          presence.cursor && (
+            <Cursor
+              key={connectionId}
+              color={cursorColors[connectionId % cursorColors.length]}
+              x={presence.cursor.x}
+              y={presence.cursor.y}
+            />
+          )
+      )}
     </div>
   );
 }

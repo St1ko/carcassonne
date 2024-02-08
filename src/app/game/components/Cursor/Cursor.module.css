@@ -1,0 +1,6 @@
+.cursor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.2s ease-in-out;
+}

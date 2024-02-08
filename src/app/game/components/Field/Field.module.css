@@ -1,0 +1,7 @@
+.field {
+  display: grid;
+  grid-auto-rows: var(--tile-size);
+  grid-gap: var(--space-xxs);
+  padding: var(--space-xs);
+  overflow: auto;
+}
