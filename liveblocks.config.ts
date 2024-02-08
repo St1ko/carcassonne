@@ -1,4 +1,9 @@
-import { createClient } from "@liveblocks/client";
+import {
+  createClient,
+  LiveList,
+  LiveMap,
+  LiveObject,
+} from "@liveblocks/client";
 import { createRoomContext } from "@liveblocks/react";
 
 const client = createClient({
@@ -8,20 +13,15 @@ const client = createClient({
   // throttle: 100,
 });
 
-// Presence represents the properties that exist on every user in the Room
-// and that will automatically be kept in sync. Accessible through the
-// `user.presence` property. Must be JSON-serializable.
 type Presence = {
   cursor: { x: number; y: number } | null;
 };
 
-// Optionally, Storage represents the shared document that persists in the
-// Room, even after all users leave. Fields under Storage typically are
-// LiveList, LiveMap, LiveObject instances, for which updates are
-// automatically persisted and synced to all connected clients.
 type Storage = {
-  // author: LiveObject<{ firstName: string, lastName: string }>,
-  // ...
+  game: LiveObject<{
+    board: LiveMap<TileType, CardType>;
+    stack: LiveList<CardType>;
+  }>;
 };
 
 // Optionally, UserMeta represents static/readonly metadata on each user, as

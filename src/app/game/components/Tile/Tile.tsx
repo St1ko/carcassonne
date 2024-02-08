@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useContext } from "react";
+import React from "react";
 
-import { GameContext } from "@/app/game/context/gameContext";
+import { useMutation, useStorage } from "root/liveblocks.config";
 
 import styles from "./Tile.module.css";
 import { Card } from "../Card/Card";
@@ -12,7 +12,24 @@ interface Props {
 }
 
 export const Tile: React.FC<Props> = ({ tile }) => {
-  const { board, moveCard } = useContext(GameContext) as GameContextType;
+  const board = useStorage((root) => root.game.board);
+
+  const moveCard = useMutation(
+    ({ storage }, card: CardType, to: TileType, from?: TileType) => {
+      const game = storage.get("game");
+      const board = game.get("board");
+
+      if (from === undefined) {
+        const stack = game.get("stack");
+        stack.delete(0);
+      } else {
+        board.delete(from);
+      }
+
+      board.set(to, card);
+    },
+    []
+  );
 
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
@@ -25,7 +42,7 @@ export const Tile: React.FC<Props> = ({ tile }) => {
     moveCard(card, tile, from);
   };
 
-  const card = board[tile];
+  const card = board.get(tile);
 
   return (
     <div
