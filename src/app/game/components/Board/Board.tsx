@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { LiveList, LiveMap, LiveObject } from "@liveblocks/client";
+import { LiveList, LiveMap } from "@liveblocks/client";
 
 import {
   useMutation,
