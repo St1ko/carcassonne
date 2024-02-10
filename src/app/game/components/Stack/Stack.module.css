@@ -1,5 +1,7 @@
 .stack {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: calc(1.5 * var(--tile-size));
   height: calc(1.5 * var(--tile-size));
   padding: var(--space-xs);

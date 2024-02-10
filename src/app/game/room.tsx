@@ -3,10 +3,9 @@
 import { LiveList, LiveMap, LiveObject } from "@liveblocks/client";
 import { ClientSideSuspense } from "@liveblocks/react";
 
-import { cards, shuffle } from "./models/cards";
-import { RoomProvider } from "../../../liveblocks.config";
+import { RoomProvider } from "root/liveblocks.config";
 
-const shuffledCards = shuffle(cards);
+import { cards, shuffle } from "./models/cards";
 
 export function Room({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +15,7 @@ export function Room({ children }: { children: React.ReactNode }) {
       initialStorage={{
         game: new LiveObject({
           board: new LiveMap(),
-          stack: new LiveList(shuffledCards),
+          stack: new LiveList(shuffle(cards)),
         }),
       }}
     >
