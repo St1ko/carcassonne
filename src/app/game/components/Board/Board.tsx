@@ -21,7 +21,7 @@ export function Board() {
   const others = useOthers();
   const userCount = others.length;
 
-  const deleteStorage = useMutation(({ storage }) => {
+  const resetBoard = useMutation(({ storage }) => {
     const game = storage.get("game");
 
     game.set("board", new LiveMap());
@@ -42,7 +42,7 @@ export function Board() {
       onPointerLeave={() => updateMyPresence({ cursor: null })}
     >
       <aside className={styles.aside}>
-        <button onClick={deleteStorage}>Reset</button>
+        <button onClick={resetBoard}>Reset</button>
         <div>There are {userCount} other user(s) online</div>
         <Stack />
       </aside>
