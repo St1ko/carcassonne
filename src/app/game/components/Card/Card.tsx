@@ -9,7 +9,7 @@ interface Props {
   location?: TileType;
 }
 
-export const Card: React.FC<Props> = ({ card, location }) => {
+const Card: React.FC<Props> = ({ card, location }) => {
   const dragStartHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     const data = { card: card, from: location };
     event.dataTransfer.setData("text/plain", JSON.stringify(data));
@@ -30,3 +30,5 @@ export const Card: React.FC<Props> = ({ card, location }) => {
     />
   );
 };
+
+export { Card };

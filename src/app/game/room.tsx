@@ -7,7 +7,11 @@ import { RoomProvider } from "root/liveblocks.config";
 
 import { cards, shuffle } from "./models/cards";
 
-export function Room({ children }: { children: React.ReactNode }) {
+interface Props {
+  children?: React.ReactNode;
+}
+
+const Room: React.FC<Props> = ({ children }) => {
   return (
     <RoomProvider
       id="my-room"
@@ -24,4 +28,6 @@ export function Room({ children }: { children: React.ReactNode }) {
       </ClientSideSuspense>
     </RoomProvider>
   );
-}
+};
+
+export { Room };
