@@ -7,7 +7,7 @@
 }
 
 .over {
-  border: 2px solid lightgreen;
+  border: 3px solid lightgreen;
 }
 
 @media (prefers-color-scheme: dark) {

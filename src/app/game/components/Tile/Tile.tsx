@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 import { useMutation, useStorage } from "root/liveblocks.config";
 
@@ -13,6 +13,8 @@ interface Props {
 
 const Tile: React.FC<Props> = ({ tile }) => {
   const board = useStorage((root) => root.game.board);
+  const card = board.get(tile);
+  const [over, setOver] = useState(false);
 
   const moveCard = useMutation(
     ({ storage }, card: CardType, to: TileType, from?: TileType) => {
@@ -31,6 +33,14 @@ const Tile: React.FC<Props> = ({ tile }) => {
     []
   );
 
+  const dragEnterHandler = (): void => {
+    if (!card) {
+      setOver(true);
+    }
+  };
+
+  const dragLeaveHandler = (): void => setOver(false);
+
   const dragOverHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
@@ -38,15 +48,21 @@ const Tile: React.FC<Props> = ({ tile }) => {
 
   const dropHandler = (event: React.DragEvent<HTMLDivElement>): void => {
     event.preventDefault();
-    const { card, from } = JSON.parse(event.dataTransfer.getData("text/plain"));
-    moveCard(card, tile, from);
-  };
+    setOver(false);
 
-  const card = board.get(tile);
+    if (!card) {
+      const { card, from } = JSON.parse(
+        event.dataTransfer.getData("text/plain")
+      );
+      moveCard(card, tile, from);
+    }
+  };
 
   return (
     <div
-      className={`${styles.tile} ${false ? styles.over : ""}`}
+      className={`${styles.tile} ${over ? styles.over : ""}`}
+      onDragEnter={dragEnterHandler}
+      onDragLeave={dragLeaveHandler}
       onDragOver={dragOverHandler}
       onDrop={dropHandler}
     >
