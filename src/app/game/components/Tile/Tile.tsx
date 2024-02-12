@@ -11,7 +11,7 @@ interface Props {
   tile: TileType;
 }
 
-export const Tile: React.FC<Props> = ({ tile }) => {
+const Tile: React.FC<Props> = ({ tile }) => {
   const board = useStorage((root) => root.game.board);
 
   const moveCard = useMutation(
@@ -54,3 +54,5 @@ export const Tile: React.FC<Props> = ({ tile }) => {
     </div>
   );
 };
+
+export { Tile };

@@ -16,7 +16,7 @@ import { Cursor, cursorColors } from "../Cursor/Cursor";
 import { Field } from "../Field/Field";
 import { Stack } from "../Stack/Stack";
 
-export function Board() {
+const Board: React.FC = () => {
   const updateMyPresence = useUpdateMyPresence();
   const others = useOthers();
   const userCount = others.length;
@@ -62,4 +62,6 @@ export function Board() {
       )}
     </div>
   );
-}
+};
+
+export { Board };

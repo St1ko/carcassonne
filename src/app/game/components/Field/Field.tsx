@@ -1,7 +1,11 @@
 import styles from "./Field.module.css";
 import { Tile } from "../Tile/Tile";
 
-export function Field({ size }: { size: number }) {
+interface Props {
+  size: number;
+}
+
+const Field: React.FC<Props> = ({ size }) => {
   const field = Array.from({ length: size }, (_, y) =>
     Array.from({ length: size }, (_, x) => ({
       tile: [x, y].join("-") as TileType,
@@ -20,4 +24,6 @@ export function Field({ size }: { size: number }) {
       })}
     </div>
   );
-}
+};
+
+export { Field };

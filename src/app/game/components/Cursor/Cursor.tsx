@@ -2,13 +2,7 @@ import React from "react";
 
 import styles from "./Cursor.module.css";
 
-type Props = {
-  color: string;
-  x: number;
-  y: number;
-};
-
-export const cursorColors = [
+const cursorColors = [
   "#E57373",
   "#9575CD",
   "#4FC3F7",
@@ -19,7 +13,13 @@ export const cursorColors = [
   "#7986CB",
 ];
 
-export function Cursor({ color, x, y }: Props) {
+type Props = {
+  color: string;
+  x: number;
+  y: number;
+};
+
+const Cursor: React.FC<Props> = ({ color, x, y }) => {
   return (
     <div
       className={styles.cursor}
@@ -35,4 +35,6 @@ export function Cursor({ color, x, y }: Props) {
       </svg>
     </div>
   );
-}
+};
+
+export { Cursor, cursorColors };

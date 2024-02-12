@@ -2,7 +2,7 @@ import { Board } from "./components/Board/Board";
 import styles from "./page.module.css";
 import { Room } from "./room";
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
     <main className={styles.main}>
       <Room>
@@ -10,4 +10,6 @@ export default function Home() {
       </Room>
     </main>
   );
-}
+};
+
+export default Home;
