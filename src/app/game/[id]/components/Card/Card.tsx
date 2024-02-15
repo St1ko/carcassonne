@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
-import { colorMapping } from "@/app/game/models/cards";
-
 import styles from "./Card.module.css";
+import { colorMapping } from "../../models/cards";
 
 interface Props {
   card: CardType;

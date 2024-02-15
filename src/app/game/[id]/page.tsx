@@ -2,10 +2,14 @@ import { Board } from "./components/Board/Board";
 import styles from "./page.module.css";
 import { Room } from "./room";
 
-const Home: React.FC = () => {
+interface Props {
+  params: { id: string };
+}
+
+const Home: React.FC<Props> = ({ params }) => {
   return (
     <main className={styles.main}>
-      <Room>
+      <Room id={params.id}>
         <Board />
       </Room>
     </main>
