@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button, Dialog, Flex, Text, TextField } from "@radix-ui/themes";
 import { useFormStatus } from "react-dom";
 
-import { createRoom } from "@/app/actions/game";
+import { createRoom } from "@/app/actions/room";
 
 const Submit: React.FC = () => {
   const { pending } = useFormStatus();

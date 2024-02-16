@@ -3,7 +3,7 @@
 import { LiveList, LiveMap, LiveObject } from "@liveblocks/client";
 import { ClientSideSuspense } from "@liveblocks/react";
 
-import { RoomProvider } from "root/liveblocks.config";
+import { RoomProvider } from "~/liveblocks.config";
 
 import { cards, shuffle } from "./models/cards";
 

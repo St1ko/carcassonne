@@ -2,7 +2,7 @@
 
 import React from "react";
 
-import { useStorage } from "root/liveblocks.config";
+import { useStorage } from "~/liveblocks.config";
 
 import styles from "./Stack.module.css";
 import { Card } from "../Card/Card";

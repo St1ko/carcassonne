@@ -5,7 +5,7 @@ import { TrashIcon } from "@radix-ui/react-icons";
 import { Card, Flex, IconButton, Text } from "@radix-ui/themes";
 import Link from "next/link";
 
-import { deleteRoom } from "../../actions/game";
+import { deleteRoom } from "@/app/actions/room";
 
 interface ItemProps {
   room: RoomInfo;

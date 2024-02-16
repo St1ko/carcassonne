@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { RoomInfo } from "@liveblocks/node";
 import { Card, Flex, Heading, Text } from "@radix-ui/themes";
 
+import { getRooms } from "@/app/actions/room";
 import { useUser } from "@/app/context/user";
 
-import { getRooms } from "../../actions/game";
 import { CreateRoomDialog } from "../CreateRoomDialog/CreateRoomDialog";
 import { RoomList } from "../RoomList/RoomList";
 
