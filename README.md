@@ -7,8 +7,8 @@ Carcassonne is a web based version of the popular tabletop game Carcassonne.
 - [x] Game board with tiles where cards can be dragged to
 - [x] Local state management
 - [x] Card stack with draggable cards
-- [ ] Multiplayer lobbies (using [Liveblocks.io](https://liveblocks.io/))
-  - [ ] Allow creation of new lobbies
+- [x] Multiplayer lobbies (using [Liveblocks.io](https://liveblocks.io/))
+  - [x] Allow creation of new lobbies
   - [ ] A game can be started, locking in the players
 - [ ] Round based player moves
   - [ ] Player needs to play one card from stack
@@ -17,6 +17,13 @@ Carcassonne is a web based version of the popular tabletop game Carcassonne.
 - [ ] Card rotation
 - [ ] Card placement validation
 - [ ] ...
+
+## Technologies used
+
+- React using Next.js
+- TypeScript
+- [Liveblocks.io](https://liveblocks.io/), toolkit for collaborative experiences
+- [Radix UI](https://www.radix-ui.com/), component library
 
 ## Run locally
 
