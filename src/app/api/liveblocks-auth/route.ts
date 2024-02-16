@@ -7,22 +7,23 @@ const liveblocks = new Liveblocks({
 });
 
 function getUserIdFromCookies() {
-  let user = cookies().get("user")?.value;
-
-  return user;
+  return cookies().get("user")?.value;
 }
 
 export async function POST() {
   const userId = getUserIdFromCookies();
 
-  const { status, body } = await liveblocks.identifyUser(
-    {
-      // fix this
-      userId: userId,
-      groupIds: [],
-    },
-    { userInfo: {} }
-  );
+  if (userId) {
+    const { status, body } = await liveblocks.identifyUser(
+      {
+        userId: userId,
+        groupIds: [],
+      },
+      { userInfo: {} }
+    );
 
-  return new Response(body, { status });
+    return new Response(body, { status });
+  } else {
+    return new Response("Could not identify user", { status: 422 });
+  }
 }
