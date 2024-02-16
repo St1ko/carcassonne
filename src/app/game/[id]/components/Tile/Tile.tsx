@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { useMutation, useStorage } from "root/liveblocks.config";
+import { useMutation, useStorage } from "~/liveblocks.config";
 
 import styles from "./Tile.module.css";
 import { Card } from "../Card/Card";

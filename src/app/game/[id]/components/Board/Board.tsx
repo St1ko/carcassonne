@@ -8,7 +8,7 @@ import {
   useMutation,
   useOthers,
   useUpdateMyPresence,
-} from "root/liveblocks.config";
+} from "~/liveblocks.config";
 
 import styles from "./Board.module.css";
 import { cards, shuffle } from "../../models/cards";
