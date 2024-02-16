@@ -10,6 +10,11 @@ export async function getRooms() {
   return data;
 }
 
+export async function getRoom(roomId: string) {
+  const room = await liveblocks.getRoom(roomId);
+  return room;
+}
+
 export async function createRoom(userId: string, formData: FormData) {
   const roomId = formData.get("name") as string;
 
