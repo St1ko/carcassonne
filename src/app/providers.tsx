@@ -12,7 +12,7 @@ interface Props {
 
 export const Providers: React.FC<Props> = ({ children }) => {
   return (
-    <ThemeProvider>
+    <ThemeProvider attribute="class">
       <Theme>
         <CookiesProvider defaultSetOptions={{ path: "/" }}>
           <UserProvider>{children}</UserProvider>
