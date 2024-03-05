@@ -1,4 +1,8 @@
+"use server";
+
 import { Liveblocks } from "@liveblocks/node";
+
+import { getUser } from "./user";
 
 const liveblocks = new Liveblocks({
   secret:
@@ -15,10 +19,15 @@ export async function getRoom(roomId: string) {
   return room;
 }
 
-export async function createRoom(userId: string, formData: FormData) {
+export async function createRoom(formData: FormData) {
   const roomId = formData.get("name") as string;
+  const userId = await getUser();
 
-  if (roomId) {
+  if (!userId) {
+    throw new Error("Unauthorized access: Could not identify user.");
+  } else if (!roomId) {
+    throw new Error("Bad request: Missing room name.");
+  } else {
     const room = await liveblocks.createRoom(roomId, {
       defaultAccesses: ["room:read", "room:presence:write"],
       usersAccesses: {
@@ -28,8 +37,6 @@ export async function createRoom(userId: string, formData: FormData) {
     });
 
     return room;
-  } else {
-    return "Name cannot be empty";
   }
 }
 

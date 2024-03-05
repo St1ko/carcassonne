@@ -2,9 +2,6 @@
 
 import { Theme } from "@radix-ui/themes";
 import { ThemeProvider } from "next-themes";
-import { CookiesProvider } from "react-cookie";
-
-import { UserProvider } from "./context/user";
 
 interface Props {
   children?: React.ReactNode;
@@ -13,11 +10,7 @@ interface Props {
 export const Providers: React.FC<Props> = ({ children }) => {
   return (
     <ThemeProvider attribute="class">
-      <Theme>
-        <CookiesProvider defaultSetOptions={{ path: "/" }}>
-          <UserProvider>{children}</UserProvider>
-        </CookiesProvider>
-      </Theme>
+      <Theme>{children}</Theme>
     </ThemeProvider>
   );
 };

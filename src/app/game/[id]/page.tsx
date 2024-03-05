@@ -1,6 +1,7 @@
 import { getRoom } from "@/app/actions/room";
 
 import { Board } from "./components/Board/Board";
+import { PreGame } from "./components/PreGame/PreGame";
 import styles from "./page.module.css";
 import { Room } from "./room";
 
@@ -14,9 +15,7 @@ const Home: React.FC<Props> = async ({ params }) => {
 
   return (
     <main className={styles.main}>
-      <Room id={params.id}>
-        {isPregame ? <div>Game has not started</div> : <Board />}
-      </Room>
+      <Room id={params.id}>{isPregame ? <PreGame /> : <Board />}</Room>
     </main>
   );
 };

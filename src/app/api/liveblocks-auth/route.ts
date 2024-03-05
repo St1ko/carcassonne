@@ -1,17 +1,14 @@
 import { Liveblocks } from "@liveblocks/node";
-import { cookies } from "next/headers";
+
+import { getUser } from "@/app/actions/user";
 
 const liveblocks = new Liveblocks({
   secret:
     "sk_dev_otq8LilqSp_yOz7lru72SN6FZc393mNu2v8ZE8qiahY_0jwfG31U2Z3iIRBddmOM",
 });
 
-function getUserIdFromCookies() {
-  return cookies().get("user")?.value;
-}
-
 export async function POST() {
-  const userId = getUserIdFromCookies();
+  const userId = await getUser();
 
   if (userId) {
     const { status, body } = await liveblocks.identifyUser(

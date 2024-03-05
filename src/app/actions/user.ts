@@ -1,7 +1,7 @@
 "use server";
 
-import { randomUUID } from "crypto";
+import { cookies } from "next/headers";
 
-export async function generateUser() {
-  return randomUUID();
+export async function getUser() {
+  return cookies().get("userId")?.value;
 }
