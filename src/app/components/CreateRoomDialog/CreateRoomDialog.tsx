@@ -16,20 +16,18 @@ const Submit: React.FC = () => {
 };
 
 interface Props {
-  user: string;
   onCreateSuccess: Function;
 }
 
-const CreateRoomDialog: React.FC<Props> = ({ user, onCreateSuccess }) => {
+const CreateRoomDialog: React.FC<Props> = ({ onCreateSuccess }) => {
   const [open, setOpen] = useState(false);
 
   async function formAction(formData: FormData) {
-    createRoomWithUserId(formData).then(() => {
+    createRoom(formData).then(() => {
       setOpen(false);
       onCreateSuccess();
     });
   }
-  const createRoomWithUserId = createRoom.bind(null, user);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
